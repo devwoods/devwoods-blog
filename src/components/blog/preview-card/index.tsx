@@ -1,28 +1,41 @@
 import Image from "next/image";
-import { Container, InfoBox, Title, Content, Date } from "./style";
+import Link from "next/link";
+import { Container, InfoBox, Title, Summary, Date } from "./style";
 
-export default function PostPreviewCard() {
+interface PostPreviewCardProps {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+  thumbnail_image_url?: string;
+}
+
+export default function PostPreviewCard({
+  id,
+  title,
+  date,
+  summary,
+  thumbnail_image_url,
+}: PostPreviewCardProps) {
   return (
-    <Container>
-      <Image
-        src="/images/devwoods-logo.png"
-        width={150}
-        height={150}
-        alt="logo"
-      />
-      <InfoBox>
-        <Date>2023-03-16</Date>
-        <Title>Example</Title>
-        <Content>
-          It is a long established fact that a reader will be distracted by the
-          readable content of a page when looking at its layout. The point of
-          using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to usinIt is a long established fact that a reader
-          will be distracted by the readable content of a page when looking at
-          its layout. The point of using Lorem Ipsum is that it has a
-          more-or-less normal distribution of letters, as opposed to usin
-        </Content>
-      </InfoBox>
-    </Container>
+    <Link href={`/blog/posts/${id}`}>
+      <Container>
+        <Image
+          src={
+            thumbnail_image_url
+              ? thumbnail_image_url
+              : "/images/devwoods-logo.png"
+          }
+          width={150}
+          height={150}
+          alt="logo"
+        />
+        <InfoBox>
+          <Date>{date}</Date>
+          <Title>{title}</Title>
+          <Summary>{summary}</Summary>
+        </InfoBox>
+      </Container>
+    </Link>
   );
 }

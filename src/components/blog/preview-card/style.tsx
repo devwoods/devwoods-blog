@@ -10,7 +10,13 @@ export const Container = styled.div`
   justify-content: space-between;
   padding: 16px;
   border-radius: 12px;
+  background-color: #fff;
   box-shadow: 1px 1px 5px #e6e6e6, -1px -1px 5px #e6e6e6;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.025);
+    transition: all 0.5s;
+  }
 `;
 
 export const InfoBox = styled.div`
@@ -29,7 +35,7 @@ export const Title = styled.h2`
   margin-top: 4px;
 `;
 
-export const Content = styled.p`
+export const Summary = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
