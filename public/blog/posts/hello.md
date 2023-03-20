@@ -16,3 +16,7 @@ summary: It is a long established fact that a reader will be distracted by the
 - 1
 - 2
 - 3
+
+```javascript
+var foo = 3;
+```

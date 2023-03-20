@@ -6,14 +6,20 @@ import gfm from "remark-gfm";
 import slug from "remark-slug";
 import ReactMarkdown from "react-markdown";
 
+import LiBlock from "src/components/blog/markdown/li-block";
+import CodeBlock from "src/components/blog/markdown/code-block";
+import BlockquoteBlock from "src/components/blog/markdown/blockquote-block";
+
 interface BlogPostProps {
   post: string;
 }
 
 export default function BlogPost({ post }: BlogPostProps) {
-  console.log(post);
   return (
-    <ReactMarkdown remarkPlugins={[gfm, slug]}>
+    <ReactMarkdown
+      remarkPlugins={[gfm, slug]}
+      components={{ code: CodeBlock, li: LiBlock, blockquote: BlockquoteBlock }}
+    >
       {matter(post).content}
     </ReactMarkdown>
   );

@@ -20,7 +20,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   useEffect(() => {
     const matters = posts.map((post) => {
       const data = matter(post).data;
-
       return {
         ...data,
         date: dayjs(data.date).format("YYYY-MM-DD"),
@@ -69,7 +68,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 const GridLayout = styled.div`
   display: grid;
   margin-top: 24px;
-  grid-gap: 16px;
+  grid-gap: 24px;
   grid-template-columns: repeat(2, 1fr);
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
     grid-template-columns: repeat(1, 1fr);
