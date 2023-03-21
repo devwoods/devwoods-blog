@@ -12,13 +12,13 @@ import { getBlogPosts } from "src/apis/post";
 import { BREAK_POINTS } from "src/configs/layout";
 import PostPreviewCard from "src/components/blog/preview-card";
 
-interface HomeProps {
+interface BlogProps {
   posts: string[];
 }
 
 const DEFAULT_PAGE_SIZE = 5;
 
-const Home: NextPage<HomeProps> = ({ posts }) => {
+const Blog: NextPage<BlogProps> = ({ posts }) => {
   const rootElRef = useRef<HTMLDivElement | null>(null);
   const [hasMore, setHasMore] = useState(true);
   const [currentPage, setCurrentPage] = useState<number>(0);
@@ -82,8 +82,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   );
 };
 
-export default Home;
-
 export async function getStaticProps() {
   try {
     const posts = getBlogPosts();
@@ -110,3 +108,5 @@ const GridLayout = styled.div`
     grid-template-columns: repeat(1, 1fr);
   }
 `;
+
+export default Blog;
