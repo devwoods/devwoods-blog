@@ -1,18 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Container, LogoWrapper, LogoTitle } from "./style";
-
+import Logo from "../../../../public/devwoods-logo.svg";
 export default function Header() {
   return (
     <Container>
       <Link href="/">
         <LogoWrapper>
-          <Image
-            src="/images/devwoods-logo.png"
-            width={60}
-            height={60}
-            alt="logo"
-          />
+          <Logo />
           <LogoTitle>DEVWOODS</LogoTitle>
         </LogoWrapper>
       </Link>
