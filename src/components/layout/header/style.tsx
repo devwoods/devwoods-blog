@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { HEADER_HEIGHT, BREAK_POINTS } from "src/configs/layout";
 
 export const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   height: ${HEADER_HEIGHT}px;
   padding: 0px 24px;
   display: flex;
