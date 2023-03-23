@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Container, InfoBox, Title, Summary, Date } from "./style";
+import { Container, InfoBox, Title, Summary, Date, ImageBox } from "./style";
 
 interface PostPreviewCardProps {
   id: string;
@@ -20,16 +20,18 @@ export default function PostPreviewCard({
   return (
     <Link href={`/blog/posts/${id}`}>
       <Container>
-        <Image
-          src={
-            thumbnail_image_url
-              ? thumbnail_image_url
-              : "/images/devwoods-logo.png"
-          }
-          width={150}
-          height={150}
-          alt="logo"
-        />
+        <ImageBox>
+          <Image
+            src={
+              thumbnail_image_url
+                ? thumbnail_image_url
+                : "/images/devwoods-logo.png"
+            }
+            width={150}
+            height={150}
+            alt="logo"
+          />
+        </ImageBox>
         <InfoBox>
           <Date>{date}</Date>
           <Title>{title}</Title>

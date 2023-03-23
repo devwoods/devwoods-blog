@@ -20,7 +20,12 @@ export const Container = styled.div`
 `;
 
 export const InfoBox = styled.div`
-  width: 85%;
+  width: 70%;
+`;
+
+export const ImageBox = styled.div`
+  width: 30%;
+  height: 100%;
 `;
 
 export const Date = styled.p`
