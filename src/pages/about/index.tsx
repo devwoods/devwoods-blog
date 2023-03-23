@@ -1,14 +1,7 @@
 import type { NextPage } from "next";
+import styled from "styled-components";
 
-import {
-  Container,
-  ContentWrapper,
-  TextContainer,
-  Mountain,
-  Title,
-  Content,
-  StrongContent,
-} from "./style";
+import { COLORS } from "src/configs/theme";
 
 const About: NextPage = () => {
   return (
@@ -30,3 +23,45 @@ const About: NextPage = () => {
 };
 
 export default About;
+
+const Container = styled.div``;
+const ContentWrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+const TextContainer = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  top: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+`;
+
+const Title = styled.h1`
+  color: ${COLORS.primary.dark};
+  font-size: clamp(2rem, 3vw, 4rem);
+`;
+
+const Content = styled.p`
+  font-size: clamp(1rem, 1.5vw, 2rem);
+`;
+
+const StrongContent = styled.p`
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 2rem);
+`;
+
+const Mountain = styled.div`
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-bottom: clamp(350px, 100vw, 500px) solid ${COLORS.primary.light};
+  border-top: clamp(35px, 5vw, 500px) solid transparent;
+  border-left: clamp(175px, 50vw, 250px) solid transparent;
+  border-right: clamp(175px, 50vw, 250px) solid transparent;
+`;
