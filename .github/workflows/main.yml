@@ -6,9 +6,9 @@ on:
 
 # 환경설정
 env:
-  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/dev-woods-blog
+  DOCKER_IMAGE: ghcr.io/${{ github.actor }}/devwoods-blog
   VERSION: ${{ github.sha }}
-  NAME: blog
+  NAME: devwoods-blog
 
 jobs:
   # 빌드 Job
@@ -47,7 +47,7 @@ jobs:
   deploy:
     needs: build
     name: Deploy
-    runs-on: [ self-hosted, blog ]
+    runs-on: [ self-hosted ]
     steps:
       - name: Login to ghcr
         uses: docker/login-action@v1
