@@ -1,13 +1,22 @@
-FROM node:16-alpine
+FROM node:lts-alpine
 
-WORKDIR /usr/app/src
+ENV NODE_ENV production
+ENV NPM_CONFIG_LOGLEVEL warn
 
-COPY . .
+RUN mkdir /home/node/app/ && chown -R node:node /home/node/app
 
-RUN npm install
+WORKDIR /home/node/app
 
-RUN npm run build
+COPY package.json package.json
+COPY package-lock.json package-lock.json
+
+USER node
+
+RUN npm install --production
+
+COPY --chown=node:node .next .next
+COPY --chown=node:node public public
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD npm start
