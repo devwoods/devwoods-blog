@@ -16,7 +16,6 @@ RUN npm install
 
 RUN npm run build
 
-COPY --chown=node:node .next .next
 COPY --chown=node:node public public
 
 EXPOSE 3000
