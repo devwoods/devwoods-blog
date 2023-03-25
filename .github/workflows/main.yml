@@ -11,12 +11,12 @@ env:
   NAME: devwoods-blog
 
 jobs:
-  # 빌드 Job
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out source code
+        uses: actions/checkout@v2
       - name: Set up docker buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
@@ -40,11 +40,11 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ env.DOCKER_IMAGE }}:latest
-  # 배포 Job
+
   deploy:
     needs: build
     name: Deploy
-    runs-on: [ self-hosted, devwoods ]
+    runs-on: [self-hosted, Linux, x64]
     steps:
       - name: Login to ghcr
         uses: docker/login-action@v1
@@ -54,5 +54,5 @@ jobs:
           password: ${{ secrets.GHCR_TOKEN }}
       - name: Docker run
         run: |
-          docker stop ${{ env.DOCKER_IMAGE }} && docker rm ${{ env.DOCKER_IMAGE }} && docker rmi ${{ env.DOCKER_IMAGE }}:${{ env.VERSIOIN }}
-          docker run -d -p 80:3000 --name devwoods-blog --restart always ${{ env.DOCKER_IMAGE }}:${{ env.VERSIOIN }}
+          docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:latest
+          docker run -d -p 80:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:latest
