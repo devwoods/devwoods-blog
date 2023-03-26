@@ -36,7 +36,7 @@ export default function Header() {
       <Link href="/">
         <LogoWrapper>
           <Logo />
-          <LogoTitle>DEVWOODS</LogoTitle>
+          <LogoTitle>DEVWOODS2</LogoTitle>
         </LogoWrapper>
       </Link>
       <Navigation />
