@@ -4,10 +4,10 @@ import { BREAK_POINTS } from "src/configs/layout";
 import { COLORS } from "src/configs/theme";
 
 export const Container = styled.div`
-  height: 180px;
+  height: 300px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: start;
   padding: 16px;
   border-radius: 12px;
   background-color: #fff;
@@ -17,15 +17,31 @@ export const Container = styled.div`
     transform: scale(1.025);
     transition: all 0.5s;
   }
+
+  @media screen and (max-width: ${BREAK_POINTS.md}px) {
+    flex-direction: column;
+    height: 320px;
+  }
 `;
 
 export const InfoBox = styled.div`
   width: 70%;
+  padding: 16px;
+  @media screen and (max-width: ${BREAK_POINTS.md}px) {
+    width: 100%;
+    height: 60%;
+  }
 `;
 
 export const ImageBox = styled.div`
+  position: relative;
   width: 30%;
   height: 100%;
+  @media screen and (max-width: ${BREAK_POINTS.md}px) {
+    width: 100%;
+    height: 40%;
+    background-color: #f0f0f0;
+  }
 `;
 
 export const Date = styled.p`
@@ -45,7 +61,7 @@ export const Summary = styled.p`
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 6;
   line-height: 1.2rem;
   font-size: clamp(0.5rem, 1.5vw, 1rem);
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
