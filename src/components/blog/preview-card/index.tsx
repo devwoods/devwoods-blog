@@ -1,6 +1,15 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Container, InfoBox, Title, Summary, Date, ImageBox } from "./style";
+import {
+  Container,
+  ColumnBox,
+  Category,
+  Title,
+  Summary,
+  Date,
+  FlexBox,
+  ReadMoreBtnWrapper,
+  ReadMoreBtn,
+} from "./style";
 
 interface PostPreviewCardProps {
   id: string;
@@ -20,10 +29,19 @@ export default function PostPreviewCard({
   return (
     <Link href={`/blog/posts/${id}`}>
       <Container>
-        <Date>{category}</Date>
-        <Title>{title}</Title>
-        <Date>{date}</Date>
+        <ColumnBox>
+          <FlexBox>
+            <Category>{category}</Category>
+            <Date>{date}</Date>
+          </FlexBox>
+
+          <Title>{title}</Title>
+        </ColumnBox>
+
         <Summary>{summary}</Summary>
+        <ReadMoreBtnWrapper>
+          <ReadMoreBtn>Read More</ReadMoreBtn>
+        </ReadMoreBtnWrapper>
       </Container>
     </Link>
   );
