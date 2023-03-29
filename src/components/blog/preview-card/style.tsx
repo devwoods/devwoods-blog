@@ -5,19 +5,17 @@ import { COLORS } from "src/configs/theme";
 
 export const Container = styled.div`
   height: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
   padding: 20px 16px;
-  cursor: pointer;
   border-radius: 12px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   box-shadow: 1px 1px 5px #e6e6e6, -1px -1px 5px #e6e6e6;
-
-  @media screen and (max-width: ${BREAK_POINTS.md}px) {
-    flex-direction: column;
-    height: 320px;
+  &:hover {
+    h2 {
+      color: ${COLORS.primary.main};
+    }
   }
 `;
 
@@ -27,36 +25,29 @@ export const ColumnBox = styled.div`
   flex-direction: column;
 `;
 
-export const FlexBox = styled.div`
+export const RowBox = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 
-export const InfoBox = styled.div`
-  width: 70%;
-  padding: 16px;
-  @media screen and (max-width: ${BREAK_POINTS.md}px) {
-    width: 100%;
-    height: 60%;
-  }
-`;
-
-export const Title = styled.h2`
-  font-size: clamp(1rem, 2.5vw, 2rem);
-  color: ${COLORS.primary.dark};
+export const Title = styled.h1`
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: #262626;
   margin: 0;
 `;
 
-export const Category = styled.p`
-  color: ${COLORS.primary.main};
+export const Category = styled.h2`
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  font-weight: 500;
+  color: #666;
 `;
 
 export const Date = styled.p`
   margin: 0px;
   color: #8c8c8c;
-  font-size: 14px;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
 `;
 
 export const Summary = styled.p`
@@ -64,10 +55,11 @@ export const Summary = styled.p`
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
+  -webkit-line-clamp: 3;
+  line-height: 1.6rem;
   font-size: clamp(0.5rem, 1.5vw, 1rem);
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: 5;
     line-height: 1.25rem;
   }
 `;
@@ -81,12 +73,15 @@ export const ReadMoreBtnWrapper = styled.div`
 export const ReadMoreBtn = styled.button`
   border: none;
   padding: 1rem;
+  color: #666;
   cursor: pointer;
+  font-weight: 700;
   border-radius: 1rem;
-  font-size: clamp(0.5rem, 1.5vw, 1rem);
-  color: ${COLORS.primary.dark};
-  font-weight: 600;
   background-color: #fff;
+  font-size: clamp(0.5rem, 1.5vw, 1rem);
+  &:hover {
+    color: ${COLORS.primary.main};
+  }
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
     padding: 0.5rem;
   }

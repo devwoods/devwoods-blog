@@ -6,7 +6,7 @@ import {
   Title,
   Summary,
   Date,
-  FlexBox,
+  RowBox,
   ReadMoreBtnWrapper,
   ReadMoreBtn,
 } from "./style";
@@ -27,22 +27,23 @@ export default function PostPreviewCard({
   category,
 }: PostPreviewCardProps) {
   return (
-    <Link href={`/blog/posts/${id}`}>
-      <Container>
-        <ColumnBox>
-          <FlexBox>
-            <Category>{category}</Category>
-            <Date>{date}</Date>
-          </FlexBox>
-
+    <Container>
+      <ColumnBox>
+        <RowBox>
+          <Category>{category}</Category>
+          <Date>{date}</Date>
+        </RowBox>
+        <Link href={`/blog/posts/${id}`}>
           <Title>{title}</Title>
-        </ColumnBox>
+        </Link>
+      </ColumnBox>
 
-        <Summary>{summary}</Summary>
-        <ReadMoreBtnWrapper>
+      <Summary>{summary}</Summary>
+      <ReadMoreBtnWrapper>
+        <Link href={`/blog/posts/${id}`}>
           <ReadMoreBtn>Read More</ReadMoreBtn>
-        </ReadMoreBtnWrapper>
-      </Container>
-    </Link>
+        </Link>
+      </ReadMoreBtnWrapper>
+    </Container>
   );
 }
