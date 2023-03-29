@@ -13,6 +13,7 @@ export const Container = styled.div`
   justify-content: space-between;
   box-shadow: 1px 1px 5px #e6e6e6, -1px -1px 5px #e6e6e6;
   &:hover {
+    h1,
     h2 {
       color: ${COLORS.primary.main};
     }

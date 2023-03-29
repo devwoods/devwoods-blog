@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 import { useInfiniteScroll } from "react-use-intersection-observer-pack";
 
-import { getBlogPosts } from "src/apis/post";
+import { getLatestPosts } from "src/apis/post";
 import { BREAK_POINTS } from "src/configs/layout";
 import PostPreviewCard from "src/components/blog/preview-card";
 
@@ -87,7 +87,7 @@ export default Home;
 
 export async function getStaticProps() {
   try {
-    const posts = getBlogPosts();
+    const posts = getLatestPosts(4);
 
     return {
       props: { posts },

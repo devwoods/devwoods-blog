@@ -23,3 +23,10 @@ export const getBlogPosts = () => {
 
   return sorted_by_date_posts;
 };
+
+export const getLatestPosts = (count: number) => {
+  const sorted_by_date_posts = getBlogPosts();
+  const latest_posts = sorted_by_date_posts.slice(0, count);
+
+  return latest_posts;
+};
