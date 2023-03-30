@@ -1,11 +1,11 @@
 export type Category =
-  | "React"
-  | "Javascript"
-  | "Typescript"
-  | "HTML"
-  | "CSS"
-  | "Next.js"
-  | "Browser";
+  | "react"
+  | "javascript"
+  | "typescript"
+  | "html"
+  | "css"
+  | "next.js"
+  | "browser";
 
 export interface PostMatter {
   id: string;

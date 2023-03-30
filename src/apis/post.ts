@@ -1,3 +1,4 @@
+import type { Category } from "src/types/post";
 import fs from "fs";
 import matter from "gray-matter";
 
@@ -29,4 +30,16 @@ export const getLatestPosts = (count: number) => {
   const latest_posts = sorted_by_date_posts.slice(0, count);
 
   return latest_posts;
+};
+
+export const getPostsByCategory = (category: Category) => {
+  const posts = getBlogPosts();
+  const posts_by_category = posts.filter((post) => {
+    const {
+      data: { category: matter_category },
+    } = matter(post);
+    return matter_category === category;
+  });
+
+  return posts_by_category;
 };
