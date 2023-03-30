@@ -1,7 +1,16 @@
+export type Category =
+  | "react"
+  | "javascript"
+  | "typescript"
+  | "html"
+  | "css"
+  | "next.js"
+  | "browser";
+
 export interface PostMatter {
   id: string;
   title: string;
   date: string;
   summary: string;
-  thumbnail_image_url?: string;
+  category: Category;
 }

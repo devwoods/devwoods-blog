@@ -17,8 +17,4 @@ export const NavItem = styled.div`
   color: ${COLORS.primary.dark};
   font-size: clamp(1.5rem, 1.5vw, 2rem);
   padding: 8px;
-  border-radius: 10px;
-  &:hover {
-    background-color: ${COLORS.primary.light};
-  }
 `;

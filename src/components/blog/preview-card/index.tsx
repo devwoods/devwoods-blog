@@ -1,13 +1,22 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Container, InfoBox, Title, Summary, Date, ImageBox } from "./style";
+import {
+  Container,
+  ColumnBox,
+  Category,
+  Title,
+  Summary,
+  Date,
+  RowBox,
+  ReadMoreBtnWrapper,
+  ReadMoreBtn,
+} from "./style";
 
 interface PostPreviewCardProps {
   id: string;
   title: string;
   date: string;
   summary: string;
-  thumbnail_image_url?: string;
+  category: string;
 }
 
 export default function PostPreviewCard({
@@ -15,29 +24,26 @@ export default function PostPreviewCard({
   title,
   date,
   summary,
-  thumbnail_image_url,
+  category,
 }: PostPreviewCardProps) {
   return (
-    <Link href={`/blog/posts/${id}`}>
-      <Container>
-        <ImageBox>
-          <Image
-            src={
-              thumbnail_image_url
-                ? thumbnail_image_url
-                : "/images/devwoods-logo.png"
-            }
-            width={150}
-            height={150}
-            alt="logo"
-          />
-        </ImageBox>
-        <InfoBox>
+    <Container>
+      <ColumnBox>
+        <RowBox>
+          <Category>{category}</Category>
           <Date>{date}</Date>
+        </RowBox>
+        <Link href={`/blog/posts/${id}`}>
           <Title>{title}</Title>
-          <Summary>{summary}</Summary>
-        </InfoBox>
-      </Container>
-    </Link>
+        </Link>
+      </ColumnBox>
+
+      <Summary>{summary}</Summary>
+      <ReadMoreBtnWrapper>
+        <Link href={`/blog/posts/${id}`}>
+          <ReadMoreBtn>Read More</ReadMoreBtn>
+        </Link>
+      </ReadMoreBtnWrapper>
+    </Container>
   );
 }

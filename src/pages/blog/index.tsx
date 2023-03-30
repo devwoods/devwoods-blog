@@ -75,6 +75,7 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
           title={post.title}
           date={post.date}
           summary={post.summary}
+          category={post.category}
         />
       ))}
       <div ref={observedTargetRef} />
