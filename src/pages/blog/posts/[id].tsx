@@ -12,6 +12,7 @@ import { BREAK_POINTS } from "src/configs/layout";
 import Img from "src/components/blog/markdown/img";
 import LiBlock from "src/components/blog/markdown/li-block";
 import CodeBlock from "src/components/blog/markdown/code-block";
+import Paragraph from "src/components/blog/markdown/paragraph";
 import BlockquoteBlock from "src/components/blog/markdown/blockquote-block";
 
 interface BlogPostProps {
@@ -28,6 +29,7 @@ export default function BlogPost({ post }: BlogPostProps) {
           li: LiBlock,
           blockquote: BlockquoteBlock,
           img: Img,
+          p: Paragraph,
         }}
       >
         {matter(post).content}
