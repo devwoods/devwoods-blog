@@ -1,4 +1,5 @@
 import type { GetStaticPropsContext } from "next";
+import styled from "styled-components";
 
 import fs from "fs";
 import matter from "gray-matter";
@@ -6,8 +7,12 @@ import gfm from "remark-gfm";
 import slug from "remark-slug";
 import ReactMarkdown from "react-markdown";
 
+import { BREAK_POINTS } from "src/configs/layout";
+
+import Img from "src/components/blog/markdown/img";
 import LiBlock from "src/components/blog/markdown/li-block";
 import CodeBlock from "src/components/blog/markdown/code-block";
+import Paragraph from "src/components/blog/markdown/paragraph";
 import BlockquoteBlock from "src/components/blog/markdown/blockquote-block";
 
 interface BlogPostProps {
@@ -16,14 +21,31 @@ interface BlogPostProps {
 
 export default function BlogPost({ post }: BlogPostProps) {
   return (
-    <ReactMarkdown
-      remarkPlugins={[gfm, slug]}
-      components={{ code: CodeBlock, li: LiBlock, blockquote: BlockquoteBlock }}
-    >
-      {matter(post).content}
-    </ReactMarkdown>
+    <Container>
+      <ReactMarkdown
+        remarkPlugins={[gfm, slug]}
+        components={{
+          code: CodeBlock,
+          li: LiBlock,
+          blockquote: BlockquoteBlock,
+          img: Img,
+          p: Paragraph,
+        }}
+      >
+        {matter(post).content}
+      </ReactMarkdown>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  padding: 32px;
+  margin: 0px 25%;
+  @media screen and (max-width: ${BREAK_POINTS.md}px) {
+    padding: 32px 16px;
+    margin: 0;
+  }
+`;
 
 export async function getStaticProps(context: GetStaticPropsContext) {
   try {
