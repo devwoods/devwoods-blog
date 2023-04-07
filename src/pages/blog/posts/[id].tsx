@@ -39,9 +39,11 @@ export default function BlogPost({ post }: BlogPostProps) {
 }
 
 const Container = styled.div`
-  padding: 32px 64px;
+  padding: 32px;
+  margin: 0px 25%;
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
     padding: 32px 16px;
+    margin: 0;
   }
 `;
 
