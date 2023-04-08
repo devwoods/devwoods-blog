@@ -5,7 +5,8 @@ export type Category =
   | "html"
   | "css"
   | "next.js"
-  | "browser";
+  | "browser"
+  | "etc";
 
 export interface PostMatter {
   id: string;
@@ -13,4 +14,5 @@ export interface PostMatter {
   date: string;
   summary: string;
   category: Category;
+  thumb_nail: string;
 }

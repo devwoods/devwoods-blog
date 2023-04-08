@@ -8,4 +8,5 @@ export const category_list: Category[] = [
   "react",
   "next.js",
   "browser",
+  "etc",
 ];

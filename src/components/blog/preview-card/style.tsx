@@ -4,8 +4,9 @@ import { BREAK_POINTS } from "src/configs/layout";
 import { COLORS } from "src/configs/theme";
 
 export const Container = styled.div`
-  height: 300px;
-  padding: 20px 16px;
+  position: relative;
+  height: 500px;
+  padding: 24px;
   border-radius: 12px;
   background-color: #fff;
   display: flex;
@@ -13,11 +14,15 @@ export const Container = styled.div`
   justify-content: space-between;
   box-shadow: 1px 1px 5px #e6e6e6, -1px -1px 5px #e6e6e6;
   &:hover {
-    h1,
-    h2 {
-      color: ${COLORS.primary.main};
-    }
+    background-color: #f8f9fa;
   }
+`;
+
+export const ImageBox = styled.div`
+  width: 100%;
+  height: 180px;
+  position: relative;
+  margin-bottom: 12px;
 `;
 
 export const ColumnBox = styled.div`
@@ -34,9 +39,9 @@ export const RowBox = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.5rem, 1.5vw, 2rem);
   color: #262626;
-  margin: 0;
+  margin: 0px;
 `;
 
 export const Category = styled.h2`
