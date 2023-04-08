@@ -46,6 +46,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
               date={post.date}
               summary={post.summary}
               category={post.category}
+              thumb_nail={post.thumb_nail}
             />
           ))}
         </PostWrapper>

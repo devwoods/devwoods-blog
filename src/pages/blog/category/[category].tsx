@@ -82,6 +82,7 @@ const PostsByCategory: NextPage<BlogProps> = ({ posts }) => {
           date={post.date}
           summary={post.summary}
           category={post.category}
+          thumb_nail={post.thumb_nail}
         />
       ))}
       <div ref={observedTargetRef} />
