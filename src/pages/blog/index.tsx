@@ -10,6 +10,8 @@ import { useInfiniteScroll } from "react-use-intersection-observer-pack";
 
 import { getBlogPosts } from "src/apis/post";
 import { BREAK_POINTS } from "src/configs/layout";
+import { COLORS } from "src/configs/theme";
+import { category_list } from "src/configs/post";
 import PostPreviewCard from "src/components/blog/preview-card";
 
 interface BlogProps {
@@ -67,19 +69,30 @@ const Blog: NextPage<BlogProps> = ({ posts }) => {
   }, [currentPage, postMatters]);
 
   return (
-    <GridLayout ref={rootElRef}>
-      {postList.map((post) => (
-        <PostPreviewCard
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          date={post.date}
-          summary={post.summary}
-          category={post.category}
-        />
-      ))}
-      <div ref={observedTargetRef} />
-    </GridLayout>
+    <Container>
+      <CategoryWrapper>
+        <Title>Category</Title>
+        <GridCategoryBox>
+          {category_list.map((category) => (
+            <CategoryBox key={category}>{category}</CategoryBox>
+          ))}
+        </GridCategoryBox>
+      </CategoryWrapper>
+      <GridLayout ref={rootElRef}>
+        {postList.map((post) => (
+          <PostPreviewCard
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            date={post.date}
+            summary={post.summary}
+            category={post.category}
+            thumb_nail={post.thumb_nail}
+          />
+        ))}
+        <div ref={observedTargetRef} />
+      </GridLayout>
+    </Container>
   );
 };
 
@@ -99,15 +112,49 @@ export async function getStaticProps() {
   }
 }
 
+export default Blog;
+
+const Container = styled.div`
+  margin: 24px;
+  padding: 16px;
+`;
+
 const GridLayout = styled.div`
   display: grid;
-  margin: 32px 48px;
   grid-gap: 24px;
-  grid-template-columns: repeat(2, 1fr);
+  margin-top: 64px;
+  grid-template-columns: repeat(3, 1fr);
   @media screen and (max-width: ${BREAK_POINTS.md}px) {
-    margin: 24px 12px;
     grid-template-columns: repeat(1, 1fr);
   }
 `;
 
-export default Blog;
+const CategoryWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24px;
+`;
+
+const Title = styled.h2``;
+
+const CategoryBox = styled.div`
+  font-size: 18px;
+  font-weight: 500;
+  color: ${COLORS.primary.dark};
+  padding: 12px;
+  border-radius: 16px;
+  cursor: pointer;
+  &:hover {
+    background-color: ${COLORS.primary.light};
+  }
+`;
+
+const GridCategoryBox = styled.div`
+  display: grid;
+  justify-items: center;
+  grid-template-columns: repeat(8, 1fr);
+  @media screen and (max-width: ${BREAK_POINTS.md}px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+`;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Container,
   ColumnBox,
@@ -7,6 +8,7 @@ import {
   Summary,
   Date,
   RowBox,
+  ImageBox,
   ReadMoreBtnWrapper,
   ReadMoreBtn,
 } from "./style";
@@ -17,6 +19,7 @@ interface PostPreviewCardProps {
   date: string;
   summary: string;
   category: string;
+  thumb_nail: string;
 }
 
 export default function PostPreviewCard({
@@ -25,25 +28,31 @@ export default function PostPreviewCard({
   date,
   summary,
   category,
+  thumb_nail,
 }: PostPreviewCardProps) {
   return (
-    <Container>
-      <ColumnBox>
+    <Link href={`/blog/posts/${id}`}>
+      <Container>
+        <ColumnBox>
+          <ImageBox>
+            <Image
+              src={thumb_nail}
+              alt="google chrome"
+              layout="fill"
+              objectFit="contain"
+            />
+          </ImageBox>
+
+          <Title>{title}</Title>
+
+          <Summary>{summary}</Summary>
+        </ColumnBox>
+
         <RowBox>
           <Category>{category}</Category>
           <Date>{date}</Date>
         </RowBox>
-        <Link href={`/blog/posts/${id}`}>
-          <Title>{title}</Title>
-        </Link>
-      </ColumnBox>
-
-      <Summary>{summary}</Summary>
-      <ReadMoreBtnWrapper>
-        <Link href={`/blog/posts/${id}`}>
-          <ReadMoreBtn>Read More</ReadMoreBtn>
-        </Link>
-      </ReadMoreBtnWrapper>
-    </Container>
+      </Container>
+    </Link>
   );
 }
