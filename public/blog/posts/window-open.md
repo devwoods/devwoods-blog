@@ -4,7 +4,7 @@ title: window.open을 사용할 때 알아두면 좋은 점
 date: 2023-04-20
 category: javascript
 thumb_nail: /blog/images/window-open/test2.png
-summary: window.open()을 사용하면서 새롭게 알게된 내용을 정리하였다.
+summary: 여러 개의 창을 열어 모니터링을 할 수 있도록 window.open을 사용하였다. 이때 몇 가지 문제가 있다는 것을 발견하였고 이를 해결하기 위한 방법을 정리하였다.
 ---
 
 # window.open을 사용할 때 알아두면 좋은 점
@@ -82,3 +82,6 @@ const handleClick = () => {
 ![test3.png](/blog/images/window-open/test3.png)
 
 ## 정리
+
+기본적으로 보안상 window.open을 사용하면 noopener와 noreferrer 속성이 설정된 상태로 새 창이 열린다. 하지만 width와 height가 설정된 상태로 새 창이 열리게되면 기본적으로 해당 속성이 추가되지 않기 때문에 반드시 추가해줘야한다.
+모니터링 관련 프로젝트를 진행하면서 혹시 많은 수를 모니터링할 때 성능에 문제가 있지 않을까?라는 생각으로 여러가지를 시도하면서 보안 이슈가 있었던 것도 알게되었고, 새 창이 부모 창과 자원을 공유한다는 것도 배울 수 있었다.
