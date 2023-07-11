@@ -1,13 +1,19 @@
-FROM node:lts-alpine
+FROM node:16-alpine as builder
 
-WORKDIR /usr/app/src
+WORKDIR /app
+
+COPY package.json ./
+COPY yarn.lock ./
+COPY .pnp.cjs ./
+COPY .pnp.loader.mjs ./
+COPY .yarnrc.yml ./
+COPY .yarn .yarn
+RUN yarn install --immutable
 
 COPY . .
 
-RUN npm install
+RUN yarn build
 
-RUN npm run build
+CMD ["node", "-r", "./.pnp.cjs", "server.js"]
 
-EXPOSE 3000
 
-CMD ["npm", "run", "start"]
