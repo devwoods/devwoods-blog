@@ -2,7 +2,7 @@ name: Devwoods Blog
 
 on:
   push:
-    branch:
+    branches:
       - "main"
     tags:
       - "*"
