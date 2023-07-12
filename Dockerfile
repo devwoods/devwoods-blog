@@ -9,6 +9,9 @@ COPY .pnp.loader.mjs ./
 COPY .yarnrc.yml ./
 COPY .yarn .yarn
 
+RUN yarn install --immutable
+
+
 COPY . .
 
 RUN yarn build
